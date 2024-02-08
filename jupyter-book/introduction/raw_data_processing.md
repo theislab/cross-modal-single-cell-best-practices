@@ -516,6 +516,17 @@ simpleaf index \
 -t 8
 ```
 
+````{admonition} Note on using an Apple silicon-based device
+piscem is not available on conda for Apple silicon devices. To avoid errors during index building, add (`--no-piscem`):
+simpleaf index \
+-o simpleaf_index \
+-f toy_human_ref/fasta/genome.fa \
+-g toy_human_ref/genes/genes.gtf \
+-r 90 \
+-t 8 \
+--no-piscem
+````
+
 In the output directory `simpleaf_index`, the `ref` folder contains the _splici_ reference; The `index` folder contains the salmon index built upon the _splici_ reference.
 
 The next step, `simpleaf quant`, consumes an index directory and the mapping record FASTQ files to generate a gene count matrix. This command encapsulates all the major steps discussed in this section, including mapping, cell barcode correction, and UMI resolution.
